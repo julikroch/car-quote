@@ -2,7 +2,6 @@ export const yearDiff = year => new Date().getFullYear() - year
 
 export const calculateBrand = brand => {
     let increment
-
     switch(brand){
         case 'european':
             increment = 1.3;
@@ -16,10 +15,7 @@ export const calculateBrand = brand => {
         default:
             break;
     }
-
     return increment
 }
 
-export const planCheck = plan => {
-    return ( plan === 'basic' ? 1.20 : 1.5 );
-}
+export const planCheck = plan => plan === 'basic' ? 1.20 : 1.5
