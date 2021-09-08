@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import styled from '@emotion/styled';
@@ -14,11 +15,14 @@ const FormContainer = styled.div`
 `;
 
 function App() {
+
+  const [resume, setResume] = useState({})
+
   return (
     <Container>
       <Header title="Car Quote" />
       <FormContainer>
-        <Form />
+        <Form setResume={setResume}/>
       </FormContainer>
     </Container>
   );

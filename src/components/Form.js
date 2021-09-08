@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
+import { yearDiff, calculateBrand, planCheck} from "../helper";
 
 const Label = styled.label`
     flex: 0 0 100px;
@@ -49,7 +50,7 @@ const Error = styled.div`
     margin-bottom: 2rem;
 `;
 
-const Form = () => {
+const Form = ({setResume}) => {
     const [data, saveData] = useState({
         brand: '',
         year:'',
@@ -75,6 +76,21 @@ const Form = () => {
             return
         }
         saveError(false)
+
+        let result = 2000
+        const diff = yearDiff(year)
+        
+        result -= ((diff * 3) - result) / 100
+
+        result = calculateBrand(brand) * result
+
+        const planIncrement = planCheck(plan)
+        result = parseFloat(planIncrement * result).toFixed(2)
+        
+        setResume({
+            quote: result,
+            data
+        })
     }
 
     return ( 
